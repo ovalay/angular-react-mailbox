@@ -9,5 +9,23 @@ angular.module("MailboxApp", ['ui.router'])
                 $scope.messages = [];
             }
         })
-
+    })
+    .service("messageStore", function () {
+        var messages = [];
+        var sampleSize = 100;
+        for (var i=0; i<sampleSize; i++) {
+            messages.push({
+                sender: "joe.bloggs"+i+"@gmail.com",
+                date: Date.now()- i*24000000,
+                id: i,
+                subject: "re: test message "+i,
+                body: "Test message "+i
+            })
+        }
+        
+        return {
+            getMessages: function () {
+                return messages;
+            }
+        }
     })
