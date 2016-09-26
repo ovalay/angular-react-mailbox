@@ -4,9 +4,9 @@ angular.module("MailboxApp", ['ui.router'])
         $stateProvider.state("inbox", {
             url:"/inbox",
             templateUrl:"partials/inbox.html",
-            controller: function ($scope) {
+            controller: function ($scope, messageStore) {
                 //console.log('inbox')
-                $scope.messages = [];
+                $scope.messages = messageStore.getMessages();
             }
         })
     })
